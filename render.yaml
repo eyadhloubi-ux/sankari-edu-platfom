@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: sankari-platform
+    runtime: static
+    buildCommand: echo "static site - no build needed"
+    staticPublishPath: .
+    autoDeploy: true
+    pullRequestPreviewsEnabled: false
+    headers:
+      - path: /content.json
+        name: Cache-Control
+        value: no-cache
+      - path: /index.html
+        name: Cache-Control
+        value: no-cache
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
